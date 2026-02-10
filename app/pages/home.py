@@ -210,6 +210,13 @@ with tab1:
 # - ML model benchmarking and interpretability
 # - Production-ready dashboards
 # """)
+st.subheader("Tech Stack")
+# cols = st.columns([1 if x < 4 else 3 for x in range(5)])
+# cols[0].button(":primary[C++]")
+# cols[1].button(":primary[Python]")
+# cols[2].button(":primary[ROOT]")
+# cols[3].button(":primary[Pandas]")
+st.markdown("| :primary[C++] | :primary[Python] | :primary[ROOT] | :primary[Pandas] |\n|---|---|---|---|")
 st.divider()
 st.empty()
 st.subheader("Get in touch")

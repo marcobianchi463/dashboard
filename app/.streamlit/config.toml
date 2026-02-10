@@ -1,10 +1,10 @@
 [theme.light]
-primaryColor = "hsl(15, 52%, 58%)"
-backgroundColor = "#fdfdf8"
+primaryColor = "#945ccc"
+backgroundColor = "#f9f9eb"
 secondaryBackgroundColor = "#ecebe3"
 textColor = "#3d3a2a"
 linkColor = "#3d3a2a"
-borderColor = "#d3d2ca"
+borderColor = "#bcbaae"
 showWidgetBorder = true
 baseRadius = "0.75rem"
 buttonRadius = "full"
@@ -19,12 +19,12 @@ chartCategoricalColors = ["#0ea5e9", "#059669", "#fbbf24"]
 chartSequentialColors = ["#0ea5e9", "#059669", "#fbbf24"]
 
 [theme.dark]
-primaryColor = "hsl(15, 52%, 62%)"
-backgroundColor = "hsl(60, 56%, 2%)"
-secondaryBackgroundColor = "hsl(53, 19%, 9%)"
-textColor = "hsl(51, 18%, 80%)"
-linkColor = "hsl(51, 18%, 80%)"
-borderColor = "hsl(53, 9%, 19%)"
+primaryColor = "#9e6cd0"
+backgroundColor = "#141414"
+secondaryBackgroundColor = "#17131b"
+textColor = "#d5d2c3"
+linkColor = "#d5d2c3"
+borderColor = "#35342c"
 showWidgetBorder = true
 baseRadius = "0.75rem"
 buttonRadius = "full"
@@ -33,7 +33,7 @@ headingFontWeights = [600,500,500,500,500,500]
 headingFontSizes = ["3rem", "2rem"]
 codeFont = "SpaceMono"
 codeFontSize = ".75rem"
-codeBackgroundColor = "hsl(52, 17%, 9%)"
+codeBackgroundColor = "#1b1a13"
 showSidebarBorder = true
 chartCategoricalColors = ["hsl(199, 89%, 52%)", "hsl(161, 94%, 70%)", "hsl(43, 96%, 44%)"]
 chartSequentialColors = ["hsl(199, 89%, 52%)", "hsl(161, 94%, 70%)", "hsl(43, 96%, 44%)"]
