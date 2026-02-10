@@ -1,0 +1,16 @@
+.git
+.github
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.venv/
+env/
+venv/
+
+.env
+data/
+assets/generated/
+
+.DS_Store
