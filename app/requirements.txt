@@ -1,4 +1,6 @@
 streamlit
 streamlit[pdf]
+st-theme
 plotly
 pandas
+geopandas
