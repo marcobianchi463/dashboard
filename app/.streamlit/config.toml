@@ -1,10 +1,10 @@
 [theme.light]
-primaryColor = "#945ccc"
-backgroundColor = "#f9f9eb"
+primaryColor = "#950E29"
+backgroundColor = "#faf9f6"
 secondaryBackgroundColor = "#ecebe3"
-textColor = "#3d3a2a"
-linkColor = "#3d3a2a"
-borderColor = "#bcbaae"
+textColor = "hsl(9, 18%, 20%)"
+linkColor = "hsl(9, 18%, 20%)"
+borderColor = "hsl(9, 10%, 71%)"
 showWidgetBorder = true
 baseRadius = "0.75rem"
 buttonRadius = "full"
@@ -19,12 +19,12 @@ chartCategoricalColors = ["#0ea5e9", "#059669", "#fbbf24"]
 chartSequentialColors = ["#0ea5e9", "#059669", "#fbbf24"]
 
 [theme.dark]
-primaryColor = "#9e6cd0"
+primaryColor = "#c8352d"
 backgroundColor = "#141414"
-secondaryBackgroundColor = "#17131b"
-textColor = "#d5d2c3"
-linkColor = "#d5d2c3"
-borderColor = "#35342c"
+secondaryBackgroundColor = "#171717"
+textColor = "#d5cac3"
+linkColor = "#d5cac3"
+borderColor = "#352d2c"
 showWidgetBorder = true
 baseRadius = "0.75rem"
 buttonRadius = "full"

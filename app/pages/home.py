@@ -3,17 +3,46 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 # import time
+# import base64
+from streamlit_theme import st_theme
 
 st.set_page_config(layout="wide")
+
+
+
+# def to_rgba(hex_code):
+#     hex_code = hex_code.lstrip("#")
+#     return f"rgba{tuple(int(hex_code[i:i+2], 16)/x for i, x in zip((0,2,4,6), (1,1,1,255)))}"
+# # st.image("static/background.jpg")
+
+# def set_background(colour1, colour2, image_path):
+#     with open(image_path, "rb") as img_file:
+#         encoded_img = base64.b64encode(img_file.read()).decode()
+#     bg_style = f"""
+#     <style>
+#     .stApp {{
+#         background: linear-gradient(90deg, {colour1} 70%, {colour2} 95%), url("data:image/jpeg;base64,{encoded_img}");
+#         background-size: cover;
+#         background-attachment: fixed;
+#     }}
+#     </style>
+#     """
+#     st.markdown(bg_style, unsafe_allow_html=True)
+
+# image_path = "static/background.jpg" if theme["base"] == "dark" else "static/l_background.jpg"
+# colours = (to_rgba(theme["backgroundColor"] + "FF"), to_rgba(theme["backgroundColor"] + "33"))# if theme["base"] == "dark" else ("rgba(249, 249, 235, 1)", "rgba(249, 249, 235, 0.2))")
+
+# set_background(*colours, image_path)
+
 col1, col2 = st.columns([2,1])
 
 # with col1:
 st.title("Marco Bianchi")
-st.markdown("""
-**Applied Data Scientist & Machine Learning Engineer**
+st.markdown("""**Applied Data Scientist & Machine Learning Engineer**<br><br>
 
-I work on large-scale, complex systems — from particle collisions to urban traffic — using data, simulation, and machine learning.
-""")
+## Working on large-scale complex systems<br>From particle collisions to urban traffic<br>Using data, simulation, and machine learning""",
+unsafe_allow_html=True)
+theme = st_theme(adjust=True)
 # Modeling complex systems through data, simulation and scientific rigor.
 
 # with col2:
@@ -59,8 +88,8 @@ st.header("Featured Projects")
 
 tab1, tab2 = st.tabs([
     "ALICE Experiment -- CERN",
-    # "Turin Traffic Lights",
-    "Curriculum Vitae"
+    "Turin Traffic Lights",
+    # "Curriculum Vitae"
     ])
 
 with tab1:
@@ -120,9 +149,9 @@ with tab1:
         filtered_df3 = df3[df3['cent'].isin(selected_centralities)]
         filtered_df4 = df4[df4['cent'].isin(selected_centralities)]
         COLOR_MAP = {
-        "0-20%": "#c93c3c",
-        "20-40%": "#e0af35",
-        "40-60%": "#059669",
+        "0-20%": "#E69F00",
+        "20-40%": "#56B4E9",
+        "40-60%": "#009E73",
         }
         col1, col2 = st.columns(2)
 
@@ -156,6 +185,13 @@ with tab1:
             st.plotly_chart(fig_v4, use_container_width=True)
 
 
+    st.subheader("Tech Stack")
+    cols = st.columns([3, 4, 3.5, 5.5], width=400, gap="xxsmall")
+    cols[0].button(":primary[C++]")
+    cols[1].button(":primary[Python]")
+    cols[2].button(":primary[ROOT]")
+    cols[3].button(":primary[Pandas]")
+    # st.markdown("| :primary[C++] | :primary[Python] | :primary[ROOT] | :primary[Pandas] |\n|---|---|---|---|")
 
     # tile = m1.container(border=True)
     # tile.markdown("""Data volume:\n* **1.1 PB** raw data\n* **155.2 GB** selected data""")
@@ -175,11 +211,44 @@ with tab1:
 
     # st.page_link('pages/flow.py', label="Explore this project", icon=':material/matter:')
 
-# with tab2:
-    # # st.markdown("### 🚦 Urban Traffic Modeling")
-    # st.markdown("### Agent-based Traffic Light Network")
-    # st.write("Simulation-driven data science for smart mobility")
-    # m1, m2 = st.columns(2)
+def get_lat_lon(geom):
+    while not geom[0].isdecimal:
+        geom = geom[1:]
+    return [float(x) for x in geom.strip(")").split()]
+
+
+with tab2:
+    # st.markdown("### 🚦 Urban Traffic Modeling")
+    st.markdown("### Agent-based Traffic Light Network")
+    st.write("Simulation-driven data science for smart mobility")
+    m = st.columns(3)
+    m[0].markdown("## :primary[$15k+$ agents]\n**Multi-agent AI apporoach**")
+    m[0].markdown("## :primary[$+30\%$]\n**Average vehicle speed**")
+    m[1].markdown("## :primary[$10k+$]\n**FIPA messages per hour**") # how many messages per hour?
+    m[1].markdown("## :primary[$-43\%$]\n**Stopped vehicles**") # how many messages per hour?
+    m[2].markdown("## :primary[$3734$]\n**Simulated traffic lights**")
+    m[2].markdown("## :primary[$-15\%$]\n**Mean absolute acceleration\***")
+    st.caption("\* Mean absolute acceleration was used as a proxy for vehicle emissions")
+    import geopandas as gpd
+
+    gdf = gpd.read_file("static/junctions_fium5.shp", encoding="utf-8")
+    with st.container(border=True):
+        st.map(
+            gdf.get_coordinates(), 
+            latitude='y', 
+            longitude='x', 
+            size=1, 
+            color=theme["primaryColor"], 
+            zoom=12.5,
+            # width=900
+            )
+    
+    st.subheader("Tech Stack")
+    cols = st.columns([3, 2.8, 3.5, 5.5], width=400, gap="xxsmall")
+    cols[0].button(":primary[Gama]")
+    cols[1].button(":primary[QGIS]")
+    cols[2].button(":primary[Python]", key="pippo")
+    # cols[3].button(":primary[Pandas]")
     # m1.metric("Agents", "1k+")
     # m2.metric("Approach", "Multi-agent AI")
     # st.page_link('pages/lights.py', label="Explore this project", icon=':material/traffic:')
@@ -210,25 +279,20 @@ with tab1:
 # - ML model benchmarking and interpretability
 # - Production-ready dashboards
 # """)
-st.subheader("Tech Stack")
-# cols = st.columns([1 if x < 4 else 3 for x in range(5)])
-# cols[0].button(":primary[C++]")
-# cols[1].button(":primary[Python]")
-# cols[2].button(":primary[ROOT]")
-# cols[3].button(":primary[Pandas]")
-st.markdown("| :primary[C++] | :primary[Python] | :primary[ROOT] | :primary[Pandas] |\n|---|---|---|---|")
 st.divider()
-st.empty()
+st.space()
 st.subheader("Get in touch")
-col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns([5, 5.65, 10], width=350, gap="xxsmall")
 
 col1.link_button("GitHub", "https://github.com/marcobianchi463", type="primary")
 col2.link_button("LinkedIn", "https://linkedin.com/in/marco-bianchi-373327327", type="primary")
 # col2.markdown("[![Title]('https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg')](https://linkedin.com/in/marco-bianchi-373327327)")
 col3.link_button("Email", "mailto:marco.bianchi411@gmail.com", type="primary")
 
-with tab2:
-    col3.pdf(
-        # "Download CV",
-        "static/CV.pdf"
-        )
+with st.expander(":primary[**My Curriculum Vitae**]", width=770):
+    st.pdf("static/CV.pdf")
+# with tab2:
+#     col3.pdf(
+#         # "Download CV",
+#         "static/CV.pdf"
+#         )
